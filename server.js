@@ -7,14 +7,11 @@ const app = express();
 //Iniciando o DB
 mongoose.connect('mongodb://localhost:27017/bancoNode', {useNewUrlParser:true, useUnifiedTopology:true});
 
-//primeira rota
-app.get('/', function (req, res){ //toda vez q acessar o diretorio raiz (/)
+//chama o model
+require('./src/models/Product');
 
-    res.send("sssa");
-})
-//conexao o bamco
-
+//rotas
+app.use('/api', require('./src/routes'));
 
 //ouve a porta 3001
-
 app.listen(3001);
